@@ -26,6 +26,8 @@ Nos comentan que este es el objeto serializado en JSON que tenemos que enviar:
 
 ## Tu tarea
 
-Completa adecuadamente la función **sendScoreToServer** para enviar los datos de la partida al endpoint una vez el jugador adivine el número secreto
+Completa adecuadamente la función **sendScoreToServer** para enviar los datos de la partida al endpoint una vez el jugador adivine el número secreto.
+
+Piensa además, en que punto del código tienes que invocar a dicha función.
 
 Puedes ver si has enviado bien tus datos porque la API te responderá con un mensaje de éxito. Además, puedes ver si tu record se ha insertado en esta [Web](https://03i74i.csb.app/)
