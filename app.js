@@ -76,7 +76,7 @@ function validateGuess(guess) {
 // ¿En que punto del código hay que invocar a esta función?
 async function sendScoreToServer() {
   // TODO: CODE ME!!
-  console.log("Enviando los datos al servidor de King.com");
+  console.log("Enviando los datos al servidor de King.com"); //POST
 }
 
 function checkGuess(guess) {
@@ -85,6 +85,7 @@ function checkGuess(guess) {
     displayMessage(
       `You guessed correctly! You can check all the scores at <a href="https://03i74i.csb.app/">https://03i74i.csb.app/</a> (provided that the developer did the work!!)`
     );
+    sendScoreToServer();
     endGame();
   } else if (guess < randomNumber) {
     displayMessage(`Too low! Try again!`);
