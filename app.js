@@ -8,7 +8,7 @@ const startOver = document.querySelector(".resultParas");
 const lowOrHi = document.querySelector(".lowOrHi");
 const p = document.createElement("p");
 let previousGuesses = [];
-let numGuesses = 1;
+let numGuesses = 0;
 let playGame = true;
 let remainingSeconds = 60;
 
@@ -74,9 +74,54 @@ function validateGuess(guess) {
 }
 
 // ¿En que punto del código hay que invocar a esta función?
+// async function sendScoreToServer() {
+//   // TODO: CODE ME!!
+//   let obj = {
+//     machine: "samane",
+//     elapsed_time: 30,
+//     attempts: 4,
+//   };
+//   const response = await fetch(
+//     `https://omiras-reimagined-rotary-phone-rpgp96g5x7fx55x-3000.preview.app.github.dev/score`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(obj),
+//     }
+//   );
+
+//   const data = await response.json();
+
+//   console.log("Enviando los datos al servidor de King.com"); //POST
+// }
 async function sendScoreToServer() {
-  // TODO: CODE ME!!
-  console.log("Enviando los datos al servidor de King.com"); //POST
+  let obj = {
+    machine: "samane",
+    elapsed_time: 60 - remainingSeconds,
+    attempts: numGuesses,
+  };
+
+  try {
+    const response = await fetch(
+      `https://omiras-reimagined-rotary-phone-rpgp96g5x7fx55x-3000.preview.app.github.dev/score`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      }
+    );
+
+    const data = await response.json();
+
+    console.log("Enviando los datos al servidor de King.com"); //POST
+    console.log(data); // loguear la respuesta del servidor
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function checkGuess(guess) {
@@ -115,6 +160,7 @@ function endGame() {
   p.innerHTML = `<h1 id="newGame">Start New Game</h1>`;
   startOver.appendChild(p);
   playGame = false;
+
   newGame();
 }
 
